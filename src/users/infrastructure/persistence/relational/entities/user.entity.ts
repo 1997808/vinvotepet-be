@@ -4,14 +4,11 @@ import {
   DeleteDateColumn,
   Entity,
   Index,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
   JoinColumn,
   OneToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
-import { RoleEntity } from '../../../../../roles/infrastructure/persistence/relational/entities/role.entity';
-import { StatusEntity } from '../../../../../statuses/infrastructure/persistence/relational/entities/status.entity';
 import { FileEntity } from '../../../../../files/infrastructure/persistence/relational/entities/file.entity';
 
 import { AuthProvidersEnum } from '../../../../../auth/auth-providers.enum';
@@ -52,16 +49,6 @@ export class UserEntity extends EntityRelationalHelper {
   })
   @JoinColumn()
   photo?: FileEntity | null;
-
-  @ManyToOne(() => RoleEntity, {
-    eager: true,
-  })
-  role?: RoleEntity | null;
-
-  @ManyToOne(() => StatusEntity, {
-    eager: true,
-  })
-  status?: StatusEntity;
 
   @CreateDateColumn()
   createdAt: Date;
