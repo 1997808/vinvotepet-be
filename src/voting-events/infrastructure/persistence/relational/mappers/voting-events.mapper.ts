@@ -6,6 +6,7 @@ export class VotingEventsMapper {
     const domainEntity = new VotingEvents();
     domainEntity.id = raw.id;
     domainEntity.name = raw.name;
+    domainEntity.choices = raw.choices;
     domainEntity.startDate = raw.startDate;
     domainEntity.endDate = raw.endDate;
     domainEntity.createdAt = raw.createdAt;

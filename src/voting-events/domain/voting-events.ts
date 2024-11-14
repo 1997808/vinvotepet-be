@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Choices } from '../../choices/domain/choices';
 
 export class VotingEvents {
   @ApiProperty({
@@ -8,6 +9,9 @@ export class VotingEvents {
 
   @ApiProperty()
   name: string;
+
+  @ApiProperty()
+  choices: Choices[];
 
   @ApiProperty()
   startDate: Date;

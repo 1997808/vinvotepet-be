@@ -44,6 +44,10 @@ export class VotingEventsService {
     return this.votingEventsRepository.findByIds(ids);
   }
 
+  // findCurrentVotingEvent() {
+  //   return this.votingEventsRepository.findCurrentVotingEvent();
+  // }
+
   async update(
     id: VotingEvents['id'],
 

@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, In } from 'typeorm';
-import { VotingEventsEntity } from '../entities/voting-events.entity';
+import { In, Repository } from 'typeorm';
 import { NullableType } from '../../../../../utils/types/nullable.type';
+import { IPaginationOptions } from '../../../../../utils/types/pagination-options';
 import { VotingEvents } from '../../../../domain/voting-events';
 import { VotingEventsRepository } from '../../voting-events.repository';
+import { VotingEventsEntity } from '../entities/voting-events.entity';
 import { VotingEventsMapper } from '../mappers/voting-events.mapper';
-import { IPaginationOptions } from '../../../../../utils/types/pagination-options';
 
 @Injectable()
 export class VotingEventsRelationalRepository
@@ -41,6 +41,7 @@ export class VotingEventsRelationalRepository
   async findById(id: VotingEvents['id']): Promise<NullableType<VotingEvents>> {
     const entity = await this.votingEventsRepository.findOne({
       where: { id },
+      relations: ['choices'],
     });
 
     return entity ? VotingEventsMapper.toDomain(entity) : null;
@@ -53,6 +54,18 @@ export class VotingEventsRelationalRepository
 
     return entities.map((entity) => VotingEventsMapper.toDomain(entity));
   }
+
+  // async findCurrentVotingEvent(): Promise<NullableType<VotingEvents>> {
+  //   const date = new Date();
+
+  //   const entity = await this.votingEventsRepository.query(
+  //     `
+  //     Select * FROM voting_events
+  //     WHERE start_date <= :date AND end_date >= :date
+  //   `,
+  //     [date],
+  //   );
+  // }
 
   async update(
     id: VotingEvents['id'],

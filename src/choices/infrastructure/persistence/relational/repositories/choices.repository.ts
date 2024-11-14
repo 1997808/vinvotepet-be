@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, In } from 'typeorm';
-import { ChoicesEntity } from '../entities/choices.entity';
+import { In, Repository } from 'typeorm';
 import { NullableType } from '../../../../../utils/types/nullable.type';
+import { IPaginationOptions } from '../../../../../utils/types/pagination-options';
 import { Choices } from '../../../../domain/choices';
 import { ChoicesRepository } from '../../choices.repository';
+import { ChoicesEntity } from '../entities/choices.entity';
 import { ChoicesMapper } from '../mappers/choices.mapper';
-import { IPaginationOptions } from '../../../../../utils/types/pagination-options';
 
 @Injectable()
 export class ChoicesRelationalRepository implements ChoicesRepository {

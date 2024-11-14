@@ -1,36 +1,33 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
-  UseGuards,
+  Get,
+  Param,
+  Patch,
+  Post,
   Query,
 } from '@nestjs/common';
-import { ChoicesService } from './choices.service';
-import { CreateChoicesDto } from './dto/create-choices.dto';
-import { UpdateChoicesDto } from './dto/update-choices.dto';
 import {
-  ApiBearerAuth,
   ApiCreatedResponse,
   ApiOkResponse,
   ApiParam,
   ApiTags,
 } from '@nestjs/swagger';
-import { Choices } from './domain/choices';
-import { AuthGuard } from '@nestjs/passport';
 import {
   InfinityPaginationResponse,
   InfinityPaginationResponseDto,
 } from '../utils/dto/infinity-pagination-response.dto';
 import { infinityPagination } from '../utils/infinity-pagination';
+import { ChoicesService } from './choices.service';
+import { Choices } from './domain/choices';
+import { CreateChoicesDto } from './dto/create-choices.dto';
 import { FindAllChoicesDto } from './dto/find-all-choices.dto';
+import { UpdateChoicesDto } from './dto/update-choices.dto';
 
 @ApiTags('Choices')
-@ApiBearerAuth()
-@UseGuards(AuthGuard('jwt'))
+// @ApiBearerAuth()
+// @UseGuards(AuthGuard('jwt'))
 @Controller({
   path: 'choices',
   version: '1',

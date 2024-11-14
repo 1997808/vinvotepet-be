@@ -1,17 +1,15 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
-  UseGuards,
+  Get,
+  Param,
+  Patch,
+  Post,
   Query,
+  UseGuards,
 } from '@nestjs/common';
-import { VotesService } from './votes.service';
-import { CreateVotesDto } from './dto/create-votes.dto';
-import { UpdateVotesDto } from './dto/update-votes.dto';
+import { AuthGuard } from '@nestjs/passport';
 import {
   ApiBearerAuth,
   ApiCreatedResponse,
@@ -19,18 +17,18 @@ import {
   ApiParam,
   ApiTags,
 } from '@nestjs/swagger';
-import { Votes } from './domain/votes';
-import { AuthGuard } from '@nestjs/passport';
 import {
   InfinityPaginationResponse,
   InfinityPaginationResponseDto,
 } from '../utils/dto/infinity-pagination-response.dto';
 import { infinityPagination } from '../utils/infinity-pagination';
+import { Votes } from './domain/votes';
+import { CreateVotesDto } from './dto/create-votes.dto';
 import { FindAllVotesDto } from './dto/find-all-votes.dto';
+import { UpdateVotesDto } from './dto/update-votes.dto';
+import { VotesService } from './votes.service';
 
 @ApiTags('Votes')
-@ApiBearerAuth()
-@UseGuards(AuthGuard('jwt'))
 @Controller({
   path: 'votes',
   version: '1',
@@ -47,6 +45,8 @@ export class VotesController {
   }
 
   @Get()
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard('jwt'))
   @ApiOkResponse({
     type: InfinityPaginationResponse(Votes),
   })
@@ -71,6 +71,8 @@ export class VotesController {
   }
 
   @Get(':id')
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard('jwt'))
   @ApiParam({
     name: 'id',
     type: String,
@@ -84,6 +86,8 @@ export class VotesController {
   }
 
   @Patch(':id')
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard('jwt'))
   @ApiParam({
     name: 'id',
     type: String,
@@ -97,6 +101,8 @@ export class VotesController {
   }
 
   @Delete(':id')
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard('jwt'))
   @ApiParam({
     name: 'id',
     type: String,

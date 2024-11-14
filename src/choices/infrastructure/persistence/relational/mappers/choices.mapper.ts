@@ -6,6 +6,7 @@ export class ChoicesMapper {
     const domainEntity = new Choices();
     domainEntity.id = raw.id;
     domainEntity.name = raw.name;
+    domainEntity.eventId = raw.eventId;
     domainEntity.createdAt = raw.createdAt;
     domainEntity.updatedAt = raw.updatedAt;
 
@@ -18,6 +19,7 @@ export class ChoicesMapper {
       persistenceEntity.id = domainEntity.id;
     }
     persistenceEntity.name = domainEntity.name;
+    persistenceEntity.eventId = domainEntity.eventId;
     persistenceEntity.createdAt = domainEntity.createdAt;
     persistenceEntity.updatedAt = domainEntity.updatedAt;
 

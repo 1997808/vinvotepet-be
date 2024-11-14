@@ -5,7 +5,7 @@ import { VotingEvents } from '../../domain/voting-events';
 
 export abstract class VotingEventsRepository {
   abstract create(
-    data: Omit<VotingEvents, 'id' | 'createdAt' | 'updatedAt'>,
+    data: Omit<VotingEvents, 'id' | 'choices' | 'createdAt' | 'updatedAt'>,
   ): Promise<VotingEvents>;
 
   abstract findAllWithPagination({

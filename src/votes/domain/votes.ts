@@ -7,7 +7,10 @@ export class Votes {
   id: string;
 
   @ApiProperty()
-  sessionId: string;
+  deviceHash: string;
+
+  @ApiProperty()
+  location: string;
 
   @ApiProperty()
   choiceId: string;

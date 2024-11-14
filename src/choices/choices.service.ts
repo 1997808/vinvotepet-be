@@ -15,6 +15,7 @@ export class ChoicesService {
   async create(createChoicesDto: CreateChoicesDto) {
     // Do not remove comment below.
     // <creating-property />
+    console.log(createChoicesDto, '===================');
 
     return this.choicesRepository.create({
       // Do not remove comment below.

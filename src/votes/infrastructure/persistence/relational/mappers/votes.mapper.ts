@@ -5,7 +5,8 @@ export class VotesMapper {
   static toDomain(raw: VotesEntity): Votes {
     const domainEntity = new Votes();
     domainEntity.id = raw.id;
-    domainEntity.sessionId = raw.sessionId;
+    domainEntity.deviceHash = raw.deviceHash;
+    domainEntity.location = raw.location;
     domainEntity.choiceId = raw.choiceId;
     domainEntity.eventId = raw.eventId;
     domainEntity.createdAt = raw.createdAt;
@@ -19,7 +20,8 @@ export class VotesMapper {
     if (domainEntity.id) {
       persistenceEntity.id = domainEntity.id;
     }
-    persistenceEntity.sessionId = domainEntity.sessionId;
+    persistenceEntity.deviceHash = domainEntity.deviceHash;
+    persistenceEntity.location = domainEntity.location;
     persistenceEntity.choiceId = domainEntity.choiceId;
     persistenceEntity.eventId = domainEntity.eventId;
     persistenceEntity.createdAt = domainEntity.createdAt;

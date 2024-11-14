@@ -1,36 +1,33 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
-  UseGuards,
+  Get,
+  Param,
+  Patch,
+  Post,
   Query,
 } from '@nestjs/common';
-import { VotingEventsService } from './voting-events.service';
-import { CreateVotingEventsDto } from './dto/create-voting-events.dto';
-import { UpdateVotingEventsDto } from './dto/update-voting-events.dto';
 import {
-  ApiBearerAuth,
   ApiCreatedResponse,
   ApiOkResponse,
   ApiParam,
   ApiTags,
 } from '@nestjs/swagger';
-import { VotingEvents } from './domain/voting-events';
-import { AuthGuard } from '@nestjs/passport';
 import {
   InfinityPaginationResponse,
   InfinityPaginationResponseDto,
 } from '../utils/dto/infinity-pagination-response.dto';
 import { infinityPagination } from '../utils/infinity-pagination';
+import { VotingEvents } from './domain/voting-events';
+import { CreateVotingEventsDto } from './dto/create-voting-events.dto';
 import { FindAllVotingEventsDto } from './dto/find-all-voting-events.dto';
+import { UpdateVotingEventsDto } from './dto/update-voting-events.dto';
+import { VotingEventsService } from './voting-events.service';
 
 @ApiTags('Votingevents')
-@ApiBearerAuth()
-@UseGuards(AuthGuard('jwt'))
+// @ApiBearerAuth()
+// @UseGuards(AuthGuard('jwt'))
 @Controller({
   path: 'voting-events',
   version: '1',

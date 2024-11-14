@@ -10,7 +10,12 @@ export class VotesDto {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  sessionId: string;
+  deviceHash: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  location: string;
 
   @ApiProperty()
   @IsString()

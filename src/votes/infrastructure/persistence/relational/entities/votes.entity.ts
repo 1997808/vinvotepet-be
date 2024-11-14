@@ -15,7 +15,10 @@ export class VotesEntity extends EntityRelationalHelper {
   id: string;
 
   @Column()
-  sessionId: string;
+  deviceHash: string;
+
+  @Column()
+  location: string;
 
   @Column()
   choiceId: string;
