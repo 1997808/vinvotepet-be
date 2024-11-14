@@ -28,18 +28,6 @@ export class User {
   provider: string;
 
   @ApiProperty({
-    type: String,
-    example: 'John',
-  })
-  firstName: string | null;
-
-  @ApiProperty({
-    type: String,
-    example: 'Doe',
-  })
-  lastName: string | null;
-
-  @ApiProperty({
     type: () => FileType,
   })
   photo?: FileType | null;

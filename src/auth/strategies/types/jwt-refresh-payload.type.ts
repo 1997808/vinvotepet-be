@@ -1,8 +1,8 @@
-import { Session } from '../../../session/domain/session';
+import { User } from '../../../users/domain/user';
 
 export type JwtRefreshPayloadType = {
-  sessionId: Session['id'];
-  hash: Session['hash'];
+  userId: User['id'];
+  hash: string;
   iat: number;
   exp: number;
 };

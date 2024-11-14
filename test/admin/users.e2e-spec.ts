@@ -22,14 +22,10 @@ describe('Users Module', () => {
     const newUserChangedPassword = `new-secret`;
 
     beforeAll(async () => {
-      await request(app)
-        .post('/api/v1/auth/email/register')
-        .send({
-          email: newUserEmail,
-          password: newUserPassword,
-          firstName: `First${Date.now()}`,
-          lastName: 'E2E',
-        });
+      await request(app).post('/api/v1/auth/email/register').send({
+        email: newUserEmail,
+        password: newUserPassword,
+      });
 
       await request(app)
         .post('/api/v1/auth/email/login')
@@ -94,8 +90,6 @@ describe('Users Module', () => {
           .send({
             email: newUserByAdminEmail,
             password: newUserByAdminPassword,
-            firstName: `UserByAdmin${Date.now()}`,
-            lastName: 'E2E',
           })
           .expect(201);
       });

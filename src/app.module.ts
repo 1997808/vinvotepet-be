@@ -1,24 +1,26 @@
 import { Module } from '@nestjs/common';
-import { UsersModule } from './users/users.module';
-import { FilesModule } from './files/files.module';
-import { AuthModule } from './auth/auth.module';
-import databaseConfig from './database/config/database.config';
-import authConfig from './auth/config/auth.config';
-import appConfig from './config/app.config';
-import mailConfig from './mail/config/mail.config';
-import fileConfig from './files/config/file.config';
-import path from 'path';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { I18nModule } from 'nestjs-i18n/dist/i18n.module';
 import { HeaderResolver } from 'nestjs-i18n';
-import { TypeOrmConfigService } from './database/typeorm-config.service';
-import { MailModule } from './mail/mail.module';
-import { HomeModule } from './home/home.module';
+import { I18nModule } from 'nestjs-i18n/dist/i18n.module';
+import path from 'path';
 import { DataSource, DataSourceOptions } from 'typeorm';
+import { AuthModule } from './auth/auth.module';
+import authConfig from './auth/config/auth.config';
+import { ChoicesModule } from './choices/choices.module';
+import appConfig from './config/app.config';
 import { AllConfigType } from './config/config.type';
-import { SessionModule } from './session/session.module';
+import databaseConfig from './database/config/database.config';
+import { TypeOrmConfigService } from './database/typeorm-config.service';
+import fileConfig from './files/config/file.config';
+import { FilesModule } from './files/files.module';
+import { HomeModule } from './home/home.module';
+import mailConfig from './mail/config/mail.config';
+import { MailModule } from './mail/mail.module';
 import { MailerModule } from './mailer/mailer.module';
+import { UsersModule } from './users/users.module';
+import { VotesModule } from './votes/votes.module';
+import { VotingEventsModule } from './voting-events/voting-events.module';
 
 const infrastructureDatabaseModule = TypeOrmModule.forRootAsync({
   useClass: TypeOrmConfigService,
@@ -29,6 +31,9 @@ const infrastructureDatabaseModule = TypeOrmModule.forRootAsync({
 
 @Module({
   imports: [
+    VotesModule,
+    VotingEventsModule,
+    ChoicesModule,
     ConfigModule.forRoot({
       isGlobal: true,
       load: [databaseConfig, authConfig, appConfig, mailConfig, fileConfig],
@@ -61,7 +66,6 @@ const infrastructureDatabaseModule = TypeOrmModule.forRootAsync({
     UsersModule,
     FilesModule,
     AuthModule,
-    SessionModule,
     MailModule,
     MailerModule,
     HomeModule,

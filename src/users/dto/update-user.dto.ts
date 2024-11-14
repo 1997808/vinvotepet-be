@@ -20,16 +20,6 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
 
   provider?: string;
 
-  socialId?: string | null;
-
-  @ApiPropertyOptional({ example: 'John', type: String })
-  @IsOptional()
-  firstName?: string | null;
-
-  @ApiPropertyOptional({ example: 'Doe', type: String })
-  @IsOptional()
-  lastName?: string | null;
-
   @ApiPropertyOptional({ type: () => FileDto })
   @IsOptional()
   photo?: FileDto | null;

@@ -26,16 +26,6 @@ export class CreateUserDto {
 
   provider?: string;
 
-  socialId?: string | null;
-
-  @ApiProperty({ example: 'John', type: String })
-  @IsNotEmpty()
-  firstName: string | null;
-
-  @ApiProperty({ example: 'Doe', type: String })
-  @IsNotEmpty()
-  lastName: string | null;
-
   @ApiPropertyOptional({ type: () => FileDto })
   @IsOptional()
   photo?: FileDto | null;

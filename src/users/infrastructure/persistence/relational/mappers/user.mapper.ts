@@ -10,8 +10,6 @@ export class UserMapper {
     domainEntity.email = raw.email;
     domainEntity.password = raw.password;
     domainEntity.provider = raw.provider;
-    domainEntity.firstName = raw.firstName;
-    domainEntity.lastName = raw.lastName;
     if (raw.photo) {
       domainEntity.photo = FileMapper.toDomain(raw.photo);
     }
@@ -39,8 +37,6 @@ export class UserMapper {
     persistenceEntity.email = domainEntity.email;
     persistenceEntity.password = domainEntity.password;
     persistenceEntity.provider = domainEntity.provider;
-    persistenceEntity.firstName = domainEntity.firstName;
-    persistenceEntity.lastName = domainEntity.lastName;
     persistenceEntity.photo = photo;
     persistenceEntity.createdAt = domainEntity.createdAt;
     persistenceEntity.updatedAt = domainEntity.updatedAt;

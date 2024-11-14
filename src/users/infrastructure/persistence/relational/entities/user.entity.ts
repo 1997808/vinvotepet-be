@@ -3,7 +3,6 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
-  Index,
   JoinColumn,
   OneToOne,
   PrimaryGeneratedColumn,
@@ -31,18 +30,6 @@ export class UserEntity extends EntityRelationalHelper {
 
   @Column({ default: AuthProvidersEnum.email })
   provider: string;
-
-  @Index()
-  @Column({ type: String, nullable: true })
-  socialId?: string | null;
-
-  @Index()
-  @Column({ type: String, nullable: true })
-  firstName: string | null;
-
-  @Index()
-  @Column({ type: String, nullable: true })
-  lastName: string | null;
 
   @OneToOne(() => FileEntity, {
     eager: true,
